@@ -1,30 +1,40 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ScrollVelocity from '../components/ScrollVelocity';
+import FlowingMenu from '../components/FlowingMenu';
 import './Home.css';
 
 const Home: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  const featuredWorks = [
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('selected-works');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const projectCategories = [
     {
-      id: 1,
-      title: 'Malësia Tea',
-      description: 'Featured design project presentation',
-      coverImage: '/coverproject1.png'
+      link: '/projects?category=ui-ux',
+      text: 'UI/UX',
+      image: '/coverproject1.png'
     },
     {
-      id: 2,
-      title: 'Project 2',
-      description: 'Coming soon',
-      placeholder: true
+      link: '/projects?category=graphic-design',
+      text: 'Graphic Design',
+      image: '/coverproject1.png'
     },
     {
-      id: 3,
-      title: 'Project 3',
-      description: 'Coming soon',
-      placeholder: true
+      link: '/projects?category=branding',
+      text: 'Branding',
+      image: '/coverproject1.png'
+    },
+    {
+      link: '/projects?category=photography',
+      text: 'Photography',
+      image: '/coverproject1.png'
     }
   ];
 
@@ -50,44 +60,29 @@ const Home: React.FC = () => {
             <span className="hero-timezone">// Boston EDT (UTC-4)</span>
           </div>
         </div>
+        <button className="scroll-down-button" onClick={scrollToNextSection} aria-label="Scroll down">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
       </section>
 
-      {/* Selected Works Section */}
-      <section id="selected-works" className="selected-works-section">
+      {/* Projects Section */}
+      <section 
+        id="selected-works" 
+        className="selected-works-section"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/background14.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="container">
-          <h2 className="section-title">Selected Works</h2>
-          <div className="works-grid">
-            {featuredWorks.map((work) => (
-              <div
-                key={work.id}
-                className="work-card"
-                onClick={() => navigate('/projects')}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className="work-image">
-                  {work.coverImage ? (
-                    <img
-                      src={work.coverImage}
-                      alt={work.title}
-                      className="work-cover-image"
-                    />
-                  ) : (
-                    <div className="work-placeholder">
-                      <span>{work.title}</span>
-                    </div>
-                  )}
-                  {work.id === 1 && (
-                    <div className="work-pdf-badge">PDF</div>
-                  )}
-                </div>
-                <div className="work-overlay">
-                  <h3>{work.title}</h3>
-                  <p>{work.description}</p>
-                  <span className="view-project">View Project →</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="section-title">Work</h2>
+        </div>
+        <div className="projects-menu-wrapper" style={{ height: '600px', position: 'relative' }}>
+          <FlowingMenu items={projectCategories} />
         </div>
       </section>
 
