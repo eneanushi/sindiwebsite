@@ -1,0 +1,233 @@
+.about-page {
+  padding-top: 100px;
+  min-height: 100vh;
+}
+
+.about-hero {
+  padding: 80px 0;
+  background: var(--color-white);
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-left {
+  position: relative;
+  opacity: 0;
+}
+
+.about-left.fade-in-up {
+  opacity: 1;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.portrait-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--color-charcoal) 0%, #1a1a1a 100%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.portrait-placeholder p {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.portrait-subtitle {
+  font-size: 14px !important;
+  opacity: 0.7;
+  font-weight: 300 !important;
+}
+
+.gold-divider {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--color-gold), transparent);
+}
+
+.about-right {
+  opacity: 0;
+}
+
+.about-right.fade-in-up {
+  opacity: 1;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+
+.about-content {
+  font-family: 'Inter', sans-serif;
+}
+
+.about-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.about-content h2:first-child {
+  margin-top: 0;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--color-charcoal);
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+.about-content strong {
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
+/* Timeline Section */
+.timeline-section {
+  padding: 120px 0;
+  background: var(--color-beige);
+  opacity: 0;
+}
+
+.timeline-section.fade-in-up {
+  opacity: 1;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.timeline-container {
+  overflow-x: auto;
+  padding: 40px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.timeline-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+  background: var(--color-gray-medium);
+  border-radius: 4px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+.timeline-track {
+  display: flex;
+  gap: 40px;
+  min-width: max-content;
+  padding: 20px 0;
+}
+
+.timeline-item {
+  min-width: 300px;
+  background: var(--color-white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-gray-medium);
+}
+
+.timeline-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .gold-divider {
+    display: none;
+  }
+  
+  .about-title {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: 80px;
+  }
+  
+  .about-container {
+    padding: 0 20px;
+  }
+  
+  .about-title {
+    font-size: 48px;
+  }
+  
+  .about-content h2 {
+    font-size: 28px;
+  }
+  
+  .about-content p {
+    font-size: 16px;
+  }
+  
+  .timeline-item {
+    min-width: 250px;
+  }
+}
+
