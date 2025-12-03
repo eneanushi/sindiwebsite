@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ScrollVelocity from '../components/ScrollVelocity';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -37,10 +38,11 @@ const Home: React.FC = () => {
             <img src="/background3.jpeg" alt="Sindi Lluka" className="hero-image" />
           </div>
           <h1 className="hero-name">SINDI LLUKA</h1>
-          <p className="hero-description">
-            Sindi Lluka is a visual design student and photographer who designs,
-            shoots, and occasionally overthinks fonts.
-          </p>
+          <ScrollVelocity
+            texts={['UI/UX • Graphic Design • Branding • Photography •']}
+            velocity={100}
+            className="custom-scroll-text"
+          />
           <div className="hero-footer">
             <a href="/contact" className="get-in-touch">
               Get in touch →
