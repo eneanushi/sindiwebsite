@@ -18,20 +18,20 @@ const Navigation: React.FC = () => {
     <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          ENEA NUSHI
+          SINDI LLUKA
         </Link>
         <div className="nav-links">
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
             Home
           </Link>
+          <Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>
+            Work
+          </Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
             About
           </Link>
-          <Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>
-            Projects
-          </Link>
-          <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''}>
-            Resume
+          <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
+            Contact
           </Link>
         </div>
       </div>

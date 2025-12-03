@@ -1,85 +1,51 @@
-import React, { useEffect, useRef, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
-
-// Component to load and display the 3D model
-const Model: React.FC = () => {
-  const { scene } = useGLTF('/model.glb');
-  return <primitive object={scene} scale={1.4} />;
-};
 
 const Home: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const sculptureRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sculptureRef.current) {
-        const rect = sculptureRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const moveX = (x - centerX) / 20;
-        const moveY = (y - centerY) / 20;
-        
-        sculptureRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const scrollToProjects = () => {
-    const projectsSection = document.getElementById('selected-works');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
+  const featuredWorks = [
+    {
+      id: 1,
+      title: 'Malësia Tea',
+      description: 'Featured design project presentation',
+      coverImage: '/coverproject1.png'
+    },
+    {
+      id: 2,
+      title: 'Project 2',
+      description: 'Coming soon',
+      placeholder: true
+    },
+    {
+      id: 3,
+      title: 'Project 3',
+      description: 'Coming soon',
+      placeholder: true
     }
-  };
+  ];
+
 
   return (
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero-section" ref={heroRef}>
-        {/* Additional 3D Background Shapes */}
-        <div className="bg-shape-1"></div>
-        <div className="bg-shape-2"></div>
-        <div className="bg-shape-3"></div>
         <div className="hero-container">
-          <div className="hero-left">
-            <h1 className="hero-name">ENEA NUSHI</h1>
-            <p className="hero-subtitle">Visual Design Student & Creative Builder</p>
-            <p className="hero-tagline">Clear. Meaningful. Aesthetic Visual Solutions.</p>
-            <button className="hero-button" onClick={scrollToProjects}>
-              Explore My Work
-            </button>
+          <div className="hero-image-wrapper">
+            <img src="/background3.jpeg" alt="Sindi Lluka" className="hero-image" />
           </div>
-          <div className="hero-right">
-            <div className="sculpture-wrapper">
-              <div className="sculpture-glow"></div>
-              <div className="sculpture-placeholder" ref={sculptureRef}>
-                <Canvas
-                  camera={{ position: [0, 0, 5], fov: 50 }}
-                  style={{ width: '100%', height: '100%' }}
-                >
-                  <Suspense fallback={null}>
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[10, 10, 5]} intensity={1} />
-                    <pointLight position={[-10, -10, -5]} intensity={0.5} />
-                    <Model />
-                    <OrbitControls
-                      enableZoom={false}
-                      enablePan={false}
-                      autoRotate
-                      autoRotateSpeed={1}
-                    />
-                    <Environment preset="sunset" />
-                  </Suspense>
-                </Canvas>
-              </div>
-            </div>
+          <h1 className="hero-name">SINDI LLUKA</h1>
+          <p className="hero-description">
+            Sindi Lluka is a visual design student and photographer who designs,
+            shoots, and occasionally overthinks fonts.
+          </p>
+          <div className="hero-footer">
+            <a href="/contact" className="get-in-touch">
+              Get in touch →
+            </a>
+            <span className="hero-timezone">// Boston EDT (UTC-4)</span>
           </div>
         </div>
       </section>
@@ -89,16 +55,33 @@ const Home: React.FC = () => {
         <div className="container">
           <h2 className="section-title">Selected Works</h2>
           <div className="works-grid">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="work-card">
+            {featuredWorks.map((work) => (
+              <div
+                key={work.id}
+                className="work-card"
+                onClick={() => navigate('/projects')}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="work-image">
-                  <div className="work-placeholder">
-                    <span>Project {item}</span>
-                  </div>
+                  {work.coverImage ? (
+                    <img
+                      src={work.coverImage}
+                      alt={work.title}
+                      className="work-cover-image"
+                    />
+                  ) : (
+                    <div className="work-placeholder">
+                      <span>{work.title}</span>
+                    </div>
+                  )}
+                  {work.id === 1 && (
+                    <div className="work-pdf-badge">PDF</div>
+                  )}
                 </div>
                 <div className="work-overlay">
-                  <h3>Project Title {item}</h3>
-                  <p>Brief description of the project</p>
+                  <h3>{work.title}</h3>
+                  <p>{work.description}</p>
+                  <span className="view-project">View Project →</span>
                 </div>
               </div>
             ))}
