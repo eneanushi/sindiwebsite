@@ -1,95 +1,113 @@
+/* Navigation Component - Matching Carter Parker Layout - High Specificity */
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 30px 0;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  padding: 24px 0 !important;
   transition: all 0.3s ease;
-  background: transparent;
+  background: transparent !important;
+  width: 100% !important;
 }
 
 .navigation.scrolled {
-  background: rgba(245, 241, 235, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 20px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  padding: 20px 0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
 }
 
+/* Container - Full Width with Padding */
 .nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 80px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
 }
 
+/* Logo - Far Left, Perfect Alignment */
 .nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-charcoal);
-  text-decoration: none;
-  letter-spacing: 2px;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  text-decoration: none !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
   transition: color 0.3s ease;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  display: block !important;
 }
 
 .nav-logo:hover {
-  color: var(--color-gold);
+  color: #D4AF37 !important;
 }
 
+/* Navigation Links Container - Far Right, Even Spacing */
 .nav-links {
-  display: flex;
-  gap: 40px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 48px !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
 }
 
+/* Individual Navigation Links */
 .nav-links a {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #4A4A4A;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #1a1a1a !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  transition: color 0.3s ease;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-gold);
-  transition: width 0.3s ease;
+/* Hover Effect - Gold Color */
+.nav-links a:hover {
+  color: #D4AF37 !important;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
-}
-
-.nav-links a:hover,
+/* Active State - Bold, Same Color */
 .nav-links a.active {
-  color: #F5D76E;
-  text-shadow: 0 0 15px rgba(245, 215, 110, 0.6), 0 0 25px rgba(212, 175, 55, 0.4);
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .nav-container {
-    padding: 0 20px;
+    padding: 0 20px !important;
   }
   
   .nav-links {
-    gap: 20px;
+    gap: 20px !important;
   }
   
   .nav-links a {
-    font-size: 12px;
+    font-size: 12px !important;
+  }
+  
+  .nav-logo {
+    font-size: 14px !important;
   }
 }
-

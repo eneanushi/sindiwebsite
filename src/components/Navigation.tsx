@@ -21,16 +21,28 @@ const Navigation: React.FC = () => {
           SINDI LLUKA
         </Link>
         <div className="nav-links">
-          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+          <Link 
+            to="/" 
+            className={location.pathname === '/' ? 'active' : ''}
+          >
             Home
           </Link>
-          <Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>
+          <Link 
+            to="/projects" 
+            className={location.pathname === '/projects' ? 'active' : ''}
+          >
             Work
           </Link>
-          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
+          <Link 
+            to="/about" 
+            className={location.pathname === '/about' ? 'active' : ''}
+          >
             About
           </Link>
-          <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
+          <Link 
+            to="/contact" 
+            className={location.pathname === '/contact' ? 'active' : ''}
+          >
             Contact
           </Link>
         </div>
@@ -40,6 +52,3 @@ const Navigation: React.FC = () => {
 };
 
 export default Navigation;
-
-
-

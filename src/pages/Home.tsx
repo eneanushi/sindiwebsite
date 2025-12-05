@@ -67,6 +67,58 @@ const Home: React.FC = () => {
         </button>
       </section>
 
+      {/* About Section */}
+      <section className="about-section">
+        <div className="about-container">
+          <div className="about-image-wrapper">
+            <img src="/me.jpeg" alt="Sindi Lluka" className="about-image" />
+          </div>
+          <div className="about-content">
+            <div className="about-main">
+              <h2 className="about-name">Sindi Lluka</h2>
+              <p className="about-description">
+                is a visual design student and creator from Boston working with digital media and creative projects.
+              </p>
+              <div className="about-skills">
+                <span>// Graphic Design</span>
+                <span>// Photography & Media</span>
+                <span>// Drawing</span>
+              </div>
+              <p className="about-background">
+                Based in Boston, Sindi has spent the past few years developing her skills in visual design, 
+                exploring the intersection of digital and traditional media to create meaningful visual experiences.
+              </p>
+            </div>
+            <div className="about-stats">
+              <div className="stat-item">
+                <div className="stat-line"></div>
+                <div className="stat-content">
+                  <span className="stat-number">3+</span>
+                  <span className="stat-label">Years of experience</span>
+                </div>
+                <div className="stat-line"></div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-line"></div>
+                <div className="stat-content">
+                  <span className="stat-number">20+</span>
+                  <span className="stat-label">Projects completed</span>
+                </div>
+                <div className="stat-line"></div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-line"></div>
+                <div className="stat-content">
+                  <span className="stat-number">15+</span>
+                  <span className="stat-label">Happy clients</span>
+                </div>
+                <div className="stat-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section 
         id="selected-works" 
