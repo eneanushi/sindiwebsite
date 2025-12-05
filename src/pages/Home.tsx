@@ -71,17 +71,11 @@ const Home: React.FC = () => {
       <section 
         id="selected-works" 
         className="selected-works-section"
-        style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/background14.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
       >
         <div className="container">
-          <h2 className="section-title">Work</h2>
+          <h2 className="section-title">Projects</h2>
         </div>
-        <div className="projects-menu-wrapper" style={{ height: '600px', position: 'relative' }}>
+        <div className="projects-menu-wrapper" style={{ height: '500px', position: 'relative' }}>
           <FlowingMenu items={projectCategories} />
         </div>
       </section>
@@ -90,27 +84,88 @@ const Home: React.FC = () => {
       <section className="skills-section">
         <div className="container">
           <h2 className="section-title">Skills & Tools</h2>
-          <div className="skills-row">
-            <div className="skill-item">
-              <div className="skill-icon">F</div>
-              <span>Figma</span>
+          <div className="skills-grid">
+            <div className="skill-card skill-card-figma">
+              <div className="skill-logo">
+                <img src="/figmalogo.png" alt="Figma" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Figma</h3>
+              <p className="skill-description">UI/UX Design</p>
             </div>
-            <div className="skill-item">
-              <div className="skill-icon">AI</div>
-              <span>Adobe Illustrator</span>
+            
+            <div className="skill-card skill-card-adobe">
+              <div className="skill-logo">
+                <img src="/adobeilogo.png" alt="Adobe Illustrator" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Adobe Illustrator</h3>
+              <p className="skill-description">Vector Graphics</p>
             </div>
-            <div className="skill-item">
-              <div className="skill-icon">PS</div>
-              <span>Photoshop</span>
+            
+            <div className="skill-card skill-card-photoshop">
+              <div className="skill-logo">
+                <img src="/photoshoplogo.png" alt="Photoshop" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Photoshop</h3>
+              <p className="skill-description">Photo Editing</p>
             </div>
-            <div className="skill-item">
-              <div className="skill-icon">T</div>
-              <span>Typography</span>
+            
+            <div className="skill-card skill-card-aftereffects">
+              <div className="skill-logo">
+                <img src="/aftereffects.png" alt="After Effects" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">After Effects</h3>
+              <p className="skill-description">Motion Graphics</p>
             </div>
-            <div className="skill-item">
-              <div className="skill-icon">M</div>
-              <span>Motion Basics</span>
+            
+            <div className="skill-card skill-card-indesign">
+              <div className="skill-logo">
+                <img src="/indesignlogo.png" alt="InDesign" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">InDesign</h3>
+              <p className="skill-description">Layout Design</p>
             </div>
+            
+            <div className="skill-card skill-card-premiere">
+              <div className="skill-logo">
+                <img src="/premierpro.png" alt="Premiere Pro" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Premiere Pro</h3>
+              <p className="skill-description">Video Editing</p>
+            </div>
+            
+            <div className="skill-card skill-card-cursor">
+              <div className="skill-logo">
+                <img src="/cursorlogo.png" alt="Cursor" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Cursor</h3>
+              <p className="skill-description">Code Editor</p>
+            </div>
+            
+            <div className="skill-card skill-card-express">
+              <div className="skill-logo">
+                <img src="/expresslogo.png" alt="Adobe Express" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Adobe Express</h3>
+              <p className="skill-description">Quick Design</p>
+            </div>
+            
+            <div className="skill-card skill-card-typography">
+              <div className="skill-logo">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="48" height="48" rx="12" fill="url(#typography-gradient)"/>
+                  <defs>
+                    <linearGradient id="typography-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#D4AF37"/>
+                      <stop offset="1" stopColor="#F5D76E"/>
+                    </linearGradient>
+                  </defs>
+                  <text x="24" y="32" fontSize="28" fontWeight="700" fill="white" textAnchor="middle" fontFamily="serif">Aa</text>
+                </svg>
+              </div>
+              <h3 className="skill-name">Typography</h3>
+              <p className="skill-description">Type Design</p>
+            </div>
+            
           </div>
         </div>
       </section>

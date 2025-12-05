@@ -34,9 +34,8 @@ const About: React.FC = () => {
       <div className="about-hero">
         <div className="about-container">
           <div className="about-left" ref={portraitRef}>
-            <div className="portrait-placeholder">
-              <p>Portrait Image</p>
-              <p className="portrait-subtitle">Black & White</p>
+            <div className="portrait-image-wrapper">
+              <img src="/me.jpeg" alt="Sindi Lluka" className="portrait-image" />
             </div>
             <div className="gold-divider"></div>
           </div>
