@@ -380,15 +380,14 @@
 
 /* Skills Section */
 .skills-section {
-  padding: 60px 0;
+  padding: 60px 0 80px 0;
   background: rgba(200, 200, 200, 0.2);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  max-height: 90vh;
 }
 
 .skills-section::before {
@@ -407,19 +406,20 @@
 
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-auto-rows: auto;
+  gap: 15px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 40px;
+  padding: 20px 40px;
   position: relative;
   z-index: 1;
 }
 
 .skill-card {
   position: relative;
-  padding: 15px 12px;
+  padding: 12px 10px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -547,7 +547,7 @@
 }
 
 .skill-logo {
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -592,9 +592,16 @@
   opacity: 0.8;
 }
 
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px;
+  }
+}
+
 @media (max-width: 768px) {
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 20px;
   }
   

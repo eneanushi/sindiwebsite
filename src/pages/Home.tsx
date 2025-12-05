@@ -245,13 +245,15 @@ const Home: React.FC = () => {
         <div className="container">
           <h2 className="section-title">Design Philosophy</h2>
           <p className="philosophy-text">
-            Design is not just about aesthetics—it's about creating meaningful connections 
-            between ideas and audiences. I believe in clarity, purpose, and emotional resonance. 
-            Every visual solution should tell a story, solve a problem, and inspire action. 
-            Through careful attention to typography, color, and composition, I craft experiences 
-            that are both beautiful and functional.
-          </p>
-          <div className="gold-line"></div>
+  Design is not just about aesthetics-it's about creating meaningful connections 
+  between ideas and audiences. I believe in clarity, purpose, and emotional resonance, 
+  where each element works together to guide the viewer through a visual story. 
+  Every visual solution should tell a story, solve a problem, and inspire action. 
+  Through careful attention to typography, color, and composition, I craft experiences 
+  that are both beautiful and functional, allowing each design to speak, feel, 
+  and communicate with intention.
+</p>
+
         </div>
       </section>
     </div>
