@@ -19,17 +19,17 @@ const Home: React.FC = () => {
     {
       link: '/projects?category=graphic-design',
       text: 'Graphic Design',
-      image: '/coverproject1.png'
+      images: ['/graphicex1.png', '/graphicex2.png', '/graphicex3.png']
     },
     {
       link: '/projects?category=photography-media',
       text: 'Photography & Media',
-      image: '/coverproject1.png'
+      images: ['/photographyex1.jpeg', '/photographyex2.jpeg', '/photographyex3.jpeg']
     },
     {
       link: '/projects?category=drawings',
       text: 'Drawings',
-      image: '/coverproject1.png'
+      images: ['/drawingex1.jpeg', '/drawingex2.jpeg', '/drawingex3.jpeg']
     }
   ];
 

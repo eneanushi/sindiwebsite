@@ -6,7 +6,8 @@ import './FlowingMenu.css';
 interface MenuItemProps {
   link: string;
   text: string;
-  image: string;
+  image?: string;
+  images?: string[];
 }
 
 interface FlowingMenuProps {
@@ -18,18 +19,35 @@ const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [] }) => {
     <div className="menu-wrap">
       <nav className="menu">
         {items.map((item, idx) => (
-          <MenuItem key={idx} {...item} />
+          <MenuItem 
+            key={idx} 
+            link={item.link}
+            text={item.text}
+            image={item.image}
+            images={item.images}
+          />
         ))}
       </nav>
     </div>
   );
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ link, text, image, images }) => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
   const linkRef = React.useRef<HTMLAnchorElement>(null);
+
+  // Use images array if provided, otherwise fall back to single image
+  const imageList = React.useMemo(() => {
+    if (images && Array.isArray(images) && images.length > 0) {
+      return images.filter(img => img && img.trim() !== '');
+    }
+    if (image) {
+      return [image];
+    }
+    return [];
+  }, [images, image]);
 
   const animationDefaults: gsap.TweenVars = { duration: 0.6, ease: 'expo' };
 
@@ -75,13 +93,47 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
   };
 
   const repeatedMarqueeContent = React.useMemo(() => {
-    return Array.from({ length: 8 }).map((_, idx) => (
-      <React.Fragment key={idx}>
-        <span>{text}</span>
-        <div className="marquee__img" style={{ backgroundImage: `url(${image})` }} />
-      </React.Fragment>
-    ));
-  }, [text, image]);
+    if (imageList.length === 0) {
+      return Array.from({ length: 8 }).map((_, idx) => (
+        <React.Fragment key={idx}>
+          <span>{text}</span>
+          <div className="marquee__img" />
+        </React.Fragment>
+      ));
+    }
+    
+    return Array.from({ length: 8 }).map((_, idx) => {
+      // Cycle through images if multiple are provided
+      const imageIndex = idx % imageList.length;
+      const currentImage = imageList[imageIndex];
+      
+      // Special positioning for specific images to show content better
+      const isGraphicEx2 = currentImage && currentImage.includes('graphicex2.png');
+      const isPhotographyEx2 = currentImage && currentImage.includes('photographyex2.jpeg');
+      
+      let backgroundPosition = 'center center';
+      if (isGraphicEx2) {
+        backgroundPosition = 'center 26%';
+      } else if (isPhotographyEx2) {
+        backgroundPosition = 'center 70%';
+      }
+      
+      return (
+        <React.Fragment key={idx}>
+          <span>{text}</span>
+          <div 
+            className="marquee__img" 
+            style={{ 
+              backgroundImage: currentImage ? `url(${currentImage})` : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: backgroundPosition,
+              backgroundRepeat: 'no-repeat'
+            }} 
+          />
+        </React.Fragment>
+      );
+    });
+  }, [text, imageList]);
 
   return (
     <div className="menu__item" ref={itemRef}>
