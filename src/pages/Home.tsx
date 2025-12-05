@@ -17,23 +17,18 @@ const Home: React.FC = () => {
 
   const projectCategories = [
     {
-      link: '/projects?category=ui-ux',
-      text: 'UI/UX',
-      image: '/coverproject1.png'
-    },
-    {
       link: '/projects?category=graphic-design',
       text: 'Graphic Design',
       image: '/coverproject1.png'
     },
     {
-      link: '/projects?category=branding',
-      text: 'Branding',
+      link: '/projects?category=photography-media',
+      text: 'Photography & Media',
       image: '/coverproject1.png'
     },
     {
-      link: '/projects?category=photography',
-      text: 'Photography',
+      link: '/projects?category=drawings',
+      text: 'Drawings',
       image: '/coverproject1.png'
     }
   ];
@@ -49,13 +44,13 @@ const Home: React.FC = () => {
           </div>
           <h1 className="hero-name">SINDI LLUKA</h1>
           <ScrollVelocity
-            texts={['UI/UX • Graphic Design • Branding • Photography •']}
+            texts={['Graphic Design • Photography & Media • Drawings •']}
             velocity={100}
             className="custom-scroll-text"
           />
           <div className="hero-footer">
-            <a href="/contact" className="get-in-touch">
-              Get in touch →
+            <a href="/about" className="get-in-touch">
+              Learn more →
             </a>
             <span className="hero-timezone">// Boston EDT (UTC-4)</span>
           </div>
@@ -77,7 +72,7 @@ const Home: React.FC = () => {
             <div className="about-main">
               <h2 className="about-name">Sindi Lluka</h2>
               <p className="about-description">
-                is a visual design student and creator from Boston working with digital media and creative projects.
+                is a Visual Design student at Bunker Hill Community College with a strong focus on creating clear, meaningful, and effective visual solutions.
               </p>
               <div className="about-skills">
                 <span>// Graphic Design</span>
@@ -85,8 +80,7 @@ const Home: React.FC = () => {
                 <span>// Drawing</span>
               </div>
               <p className="about-background">
-                Based in Boston, Sindi has spent the past few years developing her skills in visual design, 
-                exploring the intersection of digital and traditional media to create meaningful visual experiences.
+                She has completed 50+ digital design projects across product design, branding, and promotional media, supported by strong skills in Adobe Creative Suite, Figma, HTML, and CSS. Her experience as a Student Ambassador and former Photo/Video Editor has strengthened her ability to communicate visually, lead creative initiatives, and collaborate with diverse teams. With a growing interest in modern web tools like React and TypeScript, and a background in Business Law that sharpens her critical thinking, Sindi is driven to produce thoughtful, high-impact design work across digital platforms.
               </p>
             </div>
             <div className="about-stats">
@@ -101,7 +95,7 @@ const Home: React.FC = () => {
               <div className="stat-item">
                 <div className="stat-line"></div>
                 <div className="stat-content">
-                  <span className="stat-number">20+</span>
+                  <span className="stat-number">50+</span>
                   <span className="stat-label">Projects completed</span>
                 </div>
                 <div className="stat-line"></div>
@@ -109,8 +103,8 @@ const Home: React.FC = () => {
               <div className="stat-item">
                 <div className="stat-line"></div>
                 <div className="stat-content">
-                  <span className="stat-number">15+</span>
-                  <span className="stat-label">Happy clients</span>
+                  <span className="stat-number">2</span>
+                  <span className="stat-label">Companies worked for</span>
                 </div>
                 <div className="stat-line"></div>
               </div>
@@ -127,7 +121,7 @@ const Home: React.FC = () => {
         <div className="container">
           <h2 className="section-title">Projects</h2>
         </div>
-        <div className="projects-menu-wrapper" style={{ height: '500px', position: 'relative' }}>
+        <div className="projects-menu-wrapper" style={{ height: '350px', position: 'relative' }}>
           <FlowingMenu items={projectCategories} />
         </div>
       </section>
@@ -216,6 +210,30 @@ const Home: React.FC = () => {
               </div>
               <h3 className="skill-name">Typography</h3>
               <p className="skill-description">Type Design</p>
+            </div>
+            
+            <div className="skill-card skill-card-capcut">
+              <div className="skill-logo">
+                <img src="/capcut.png" alt="CapCut" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">CapCut</h3>
+              <p className="skill-description">Video Editing</p>
+            </div>
+            
+            <div className="skill-card skill-card-canva">
+              <div className="skill-logo">
+                <img src="/canva.png" alt="Canva" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Canva</h3>
+              <p className="skill-description">Graphic Design</p>
+            </div>
+            
+            <div className="skill-card skill-card-lightroom">
+              <div className="skill-logo">
+                <img src="/lightroomlogo.png" alt="Lightroom" className="skill-logo-img" />
+              </div>
+              <h3 className="skill-name">Lightroom</h3>
+              <p className="skill-description">Photo Editing</p>
             </div>
             
           </div>

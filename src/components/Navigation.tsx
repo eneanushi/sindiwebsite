@@ -39,12 +39,6 @@ const Navigation: React.FC = () => {
           >
             About
           </Link>
-          <Link 
-            to="/contact" 
-            className={location.pathname === '/contact' ? 'active' : ''}
-          >
-            Contact
-          </Link>
         </div>
       </div>
     </nav>
