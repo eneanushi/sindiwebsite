@@ -19,7 +19,7 @@ const Gallery: React.FC = () => {
   }, [selectedCategory]);
 
   const handleCategoryChange = useCallback((category: string) => {
-    if (category === selectedCategory) return;
+    if (category === selectedCategory || isTransitioning) return;
     
     // Clear any existing transition timeout
     if (transitionTimeoutRef.current) {
@@ -29,15 +29,15 @@ const Gallery: React.FC = () => {
     // Brief transition animation
     setIsTransitioning(true);
     
-    // Small delay to allow exit animation
+    // Faster transition for snappier feel
     transitionTimeoutRef.current = setTimeout(() => {
       setSelectedCategory(category);
-      // Allow enter animation to complete
-      setTimeout(() => {
+      // Quick fade back in
+      requestAnimationFrame(() => {
         setIsTransitioning(false);
-      }, 50);
-    }, 150);
-  }, [selectedCategory]);
+      });
+    }, 100);
+  }, [selectedCategory, isTransitioning]);
 
   const handleImageClick = useCallback((item: GalleryImage) => {
     setSelectedImage(item);

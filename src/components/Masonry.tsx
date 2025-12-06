@@ -144,47 +144,54 @@ const Masonry: React.FC<MasonryProps> = ({
   useLayoutEffect(() => {
     if (!imagesReady || grid.length === 0) return;
 
-    grid.forEach((item, index) => {
-      const selector = `[data-key="${item.id}"]`;
-      const animationProps = {
-        x: item.x,
-        y: item.y,
-        width: item.w,
-        height: item.h
-      };
-
-      if (!hasMounted.current) {
-        const initialPos = getInitialPosition(item);
-        const initialState = {
-          opacity: 0,
-          x: initialPos.x,
-          y: initialPos.y,
-          width: item.w,
-          height: item.h,
-          ...(blurToFocus && { filter: 'blur(10px)' })
-        };
-
-        gsap.fromTo(selector, initialState, {
-          opacity: 1,
-          ...animationProps,
-          ...(blurToFocus && { filter: 'blur(0px)' }),
-          duration: 0.4,
-          ease: 'power2.out',
-          delay: index * stagger
-        });
-      } else {
-        gsap.to(selector, {
-          ...animationProps,
-          opacity: 1,
-          duration: 0.4,
-          ease: 'power2.out',
-          overwrite: true,
-          immediateRender: true
-        });
-      }
+    // Kill any existing animations to prevent conflicts
+    grid.forEach((item) => {
+      gsap.killTweensOf(`[data-key="${item.id}"]`);
     });
 
-    hasMounted.current = true;
+    // Use requestAnimationFrame for smoother initial render
+    requestAnimationFrame(() => {
+      grid.forEach((item, index) => {
+        const selector = `[data-key="${item.id}"]`;
+        const animationProps = {
+          x: item.x,
+          y: item.y,
+          width: item.w,
+          height: item.h
+        };
+
+        if (!hasMounted.current) {
+          const initialPos = getInitialPosition(item);
+          const initialState = {
+            opacity: 0,
+            x: initialPos.x,
+            y: initialPos.y,
+            width: item.w,
+            height: item.h,
+            ...(blurToFocus && { filter: 'blur(10px)' })
+          };
+
+          gsap.fromTo(selector, initialState, {
+            opacity: 1,
+            ...animationProps,
+            ...(blurToFocus && { filter: 'blur(0px)' }),
+            duration: 0.3,
+            ease: 'power2.out',
+            delay: index * stagger
+          });
+        } else {
+          gsap.to(selector, {
+            ...animationProps,
+            opacity: 1,
+            duration: 0.25,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+      });
+
+      hasMounted.current = true;
+    });
   }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
   const handleMouseEnter = (e: React.MouseEvent, item: GridItem) => {

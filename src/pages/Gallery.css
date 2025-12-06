@@ -58,13 +58,14 @@
 
 /* Gallery content transitions */
 .gallery-content {
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition: opacity 0.1s ease-out, transform 0.1s ease-out;
   will-change: opacity, transform;
+  contain: layout style;
 }
 
 .gallery-content.transitioning {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
   pointer-events: none;
 }
 

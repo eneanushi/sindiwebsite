@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import './LazyImage.css';
+
+// Cache for already loaded images
+const imageCache = new Set<string>();
 
 interface LazyImageProps {
   src: string;
@@ -9,21 +12,25 @@ interface LazyImageProps {
   category?: string;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({
+const LazyImage: React.FC<LazyImageProps> = memo(({
   src,
   alt = '',
   className = '',
   onLoad,
   category
 }) => {
-  const [isInView, setIsInView] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [loadProgress, setLoadProgress] = useState(0);
+  // Check if image is already cached
+  const isCached = imageCache.has(src);
+  const [isInView, setIsInView] = useState(isCached);
+  const [isLoaded, setIsLoaded] = useState(isCached);
+  const [loadProgress, setLoadProgress] = useState(isCached ? 100 : 0);
   const containerRef = useRef<HTMLDivElement>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Intersection Observer to detect when image enters viewport
   useEffect(() => {
+    if (isCached) return; // Skip observer for cached images
+    
     const element = containerRef.current;
     if (!element) return;
 
@@ -37,7 +44,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
         });
       },
       {
-        rootMargin: '100px', // Start loading 100px before entering viewport
+        rootMargin: '150px', // Start loading 150px before entering viewport
         threshold: 0
       }
     );
@@ -47,46 +54,47 @@ const LazyImage: React.FC<LazyImageProps> = ({
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [isCached]);
 
   // Simulate loading progress for better UX
   useEffect(() => {
-    if (isInView && !isLoaded) {
-      setLoadProgress(0);
-      
-      // Simulate progress that accelerates then slows down
-      let progress = 0;
-      progressIntervalRef.current = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 90) {
-          progress = 90; // Cap at 90% until actual load completes
-          if (progressIntervalRef.current) {
-            clearInterval(progressIntervalRef.current);
-          }
+    if (isCached || !isInView || isLoaded) return;
+    
+    setLoadProgress(0);
+    
+    // Simulate progress that accelerates then slows down
+    let progress = 0;
+    progressIntervalRef.current = setInterval(() => {
+      progress += Math.random() * 20 + 5;
+      if (progress >= 90) {
+        progress = 90; // Cap at 90% until actual load completes
+        if (progressIntervalRef.current) {
+          clearInterval(progressIntervalRef.current);
         }
-        setLoadProgress(Math.min(progress, 90));
-      }, 100);
-    }
+      }
+      setLoadProgress(Math.min(progress, 90));
+    }, 80);
 
     return () => {
       if (progressIntervalRef.current) {
         clearInterval(progressIntervalRef.current);
       }
     };
-  }, [isInView, isLoaded]);
+  }, [isInView, isLoaded, isCached]);
 
   const handleImageLoad = useCallback(() => {
     if (progressIntervalRef.current) {
       clearInterval(progressIntervalRef.current);
     }
+    imageCache.add(src); // Add to cache
     setLoadProgress(100);
     
-    // Small delay to show 100% before transitioning
-    setTimeout(() => {
+    // Shorter delay for snappier feel
+    requestAnimationFrame(() => {
       setIsLoaded(true);
       onLoad?.();
-    }, 150);
-  }, [onLoad]);
+    });
+  }, [onLoad, src]);
 
   const handleImageError = useCallback(() => {
     if (progressIntervalRef.current) {
@@ -154,6 +162,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
       )}
     </div>
   );
-};
+});
+
+LazyImage.displayName = 'LazyImage';
 
 export default LazyImage;
