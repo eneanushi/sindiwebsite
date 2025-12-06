@@ -34,11 +34,11 @@
 /* Logo - Refined Typography */
 .nav-logo {
   font-family: 'Inter', sans-serif !important;
-  font-size: 17px !important;
+  font-size: 18px !important;
   font-weight: 800 !important;
-  color: #0A0A0A !important;
+  color: #000000 !important;
   text-decoration: none !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: 0.02em !important;
   text-transform: uppercase !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0 !important;
@@ -47,6 +47,8 @@
   line-height: 1 !important;
   display: block !important;
   position: relative !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 .nav-logo::after {
@@ -94,33 +96,35 @@
 .nav-links a {
   font-family: 'Inter', sans-serif !important;
   font-size: 14px !important;
-  font-weight: 500 !important;
-  color: #555555 !important;
+  font-weight: 600 !important;
+  color: #444444 !important;
   text-decoration: none !important;
   text-transform: none !important;
-  letter-spacing: 0.01em !important;
+  letter-spacing: 0.02em !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative !important;
   margin: 0 !important;
-  padding: 12px 22px !important;
+  padding: 12px 24px !important;
   line-height: 1 !important;
   white-space: nowrap !important;
   display: inline-block !important;
   border-radius: 100px !important;
   background: transparent !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 /* Hover Effect - Subtle Background */
 .nav-links a:hover {
-  color: #1A1A1A !important;
+  color: #000000 !important;
   background: rgba(255, 255, 255, 0.8) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
 }
 
 /* Active State - Gold Accent Pill */
 .nav-links a.active {
-  color: #1A1A1A !important;
-  font-weight: 600 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
   background: #FFFFFF !important;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 
               inset 0 0 0 1px rgba(212, 175, 55, 0.2) !important;
@@ -177,7 +181,7 @@
   }
   
   .nav-logo {
-    font-size: 14px !important;
+    font-size: 15px !important;
   }
 }
 

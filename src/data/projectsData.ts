@@ -124,7 +124,7 @@ export const posterProjects: PosterProject[] = [
 export const brandingProjects: BrandingProject[] = [
   {
     id: 'eja-lounge',
-    title: 'EJA Lounge – Victorian-Inspired Restaurant Branding System',
+    title: 'EJA Lounge – Victorian-Inspired Restaurant',
     description: 'EJA Lounge is a complete branding and identity project inspired by Late Victorian aesthetics and Albanian cultural elements. The visual system blends ornate patterns, rich jewel-toned color palettes, and a signature fan motif to create an inviting, elegant atmosphere that reflects the lounge\'s name—"Eja," meaning "come" in Albanian. The project includes moodboards, typography selection, motifs, menu design, business cards, interior visualizations, and digital mockups, all unified through detailed Victorian-inspired ornamentation and modern refinement.',
     category: 'branding',
     coverImage: '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/13.png',
