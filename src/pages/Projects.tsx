@@ -363,13 +363,13 @@ const Projects: React.FC = () => {
                     {brandingProjects.map((project, index) => (
                       <div 
                         key={project.id}
-                        className="project-showcase-card branding-card"
+                        className={`project-showcase-card branding-card ${project.id === 'eja-lounge' ? 'eja-featured' : ''}`}
                         style={{ animationDelay: `${index * 0.15}s` }}
                       >
                         <div className="showcase-header">
                           <div className="showcase-meta">
                             <span className="project-year">{project.year}</span>
-                            <span className="project-type">Branding</span>
+                            <span className="project-type">{project.id === 'eja-lounge' ? 'Restaurant Branding' : 'Branding'}</span>
                           </div>
                           <h3 className="showcase-title">{project.title}</h3>
                           <p className="showcase-description">{project.description}</p>
@@ -381,8 +381,8 @@ const Projects: React.FC = () => {
                         </div>
 
                         <div className="showcase-gallery">
-                          <div className="gallery-grid branding-grid">
-                            {project.images.slice(0, 6).map((img, imgIndex) => (
+                          <div className={`gallery-grid ${project.id === 'eja-lounge' ? 'eja-grid' : 'branding-grid'}`}>
+                            {project.images.slice(0, project.id === 'eja-lounge' ? 8 : 6).map((img, imgIndex) => (
                               <div 
                                 key={imgIndex}
                                 className={`gallery-item gallery-item-${imgIndex + 1}`}

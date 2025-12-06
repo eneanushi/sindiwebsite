@@ -144,6 +144,34 @@ export const brandingProjects: BrandingProject[] = [
     pdfUrl: '/work/Graphic Design/product design & branding/malesia/Malesia.pdf',
     year: '2025',
     tools: ['Illustrator', 'Photoshop', 'InDesign']
+  },
+  {
+    id: 'eja-lounge',
+    title: 'EJA Lounge – Victorian-Inspired Restaurant Branding System',
+    description: 'EJA Lounge is a complete branding and identity project inspired by Late Victorian aesthetics and Albanian cultural elements. The visual system blends ornate patterns, rich jewel-toned color palettes, and a signature fan motif to create an inviting, elegant atmosphere that reflects the lounge\'s name—"Eja," meaning "come" in Albanian. The project includes moodboards, typography selection, motifs, menu design, business cards, interior visualizations, and digital mockups, all unified through detailed Victorian-inspired ornamentation and modern refinement.',
+    category: 'branding',
+    images: [
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/1.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/2.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/3.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/4.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/5.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/6.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/7.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/8.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/9.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/10.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/11.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/12.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/13.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/14.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/15.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/16.png',
+      '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/17.png',
+    ],
+    pdfUrl: '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/Eja.pdf',
+    year: '2025',
+    tools: ['Adobe Illustrator', 'Adobe InDesign', 'Adobe Photoshop']
   }
 ];
 
