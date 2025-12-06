@@ -582,6 +582,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 100px;
+  z-index: 1;
 }
 
 .edu-school {
@@ -590,6 +591,11 @@
   font-weight: 700;
   color: var(--color-charcoal);
   margin: 0 0 8px 0;
+  padding-right: 100px;
+}
+
+.education-card:not(.current) .edu-school {
+  padding-right: 0;
 }
 
 .edu-degree {

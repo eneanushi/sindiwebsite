@@ -42,7 +42,7 @@ type GraphicSubCategory = 'magazines' | 'posters' | 'branding';
 const Projects: React.FC = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<MainCategory>('graphic-design');
-  const [graphicSubCategory, setGraphicSubCategory] = useState<GraphicSubCategory>('magazines');
+  const [graphicSubCategory, setGraphicSubCategory] = useState<GraphicSubCategory>('branding');
   const [selectedProject, setSelectedProject] = useState<MagazineProject | BrandingProject | null>(null);
   const [selectedPoster, setSelectedPoster] = useState<PosterProject | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -92,9 +92,9 @@ const Projects: React.FC = () => {
 
   // Graphic design sub-categories
   const graphicSubCategories: { id: GraphicSubCategory; label: string }[] = [
+    { id: 'branding', label: 'Product Design & Branding' },
     { id: 'magazines', label: 'Magazines' },
     { id: 'posters', label: 'Posters' },
-    { id: 'branding', label: 'Product Design & Branding' },
   ];
 
   return (
@@ -214,7 +214,7 @@ const Projects: React.FC = () => {
                 <div className="subsection magazines-subsection">
                   <div className="section-header">
                     <div className="section-title-group">
-                      <span className="section-number">02.1</span>
+                      <span className="section-number">02.2</span>
                       <h2 className="section-title">Magazines</h2>
                     </div>
                     <p className="section-description">
@@ -297,7 +297,7 @@ const Projects: React.FC = () => {
                 <div className="subsection posters-subsection">
                   <div className="section-header">
                     <div className="section-title-group">
-                      <span className="section-number">02.2</span>
+                      <span className="section-number">02.3</span>
                       <h2 className="section-title">Posters</h2>
                     </div>
                     <p className="section-description">
@@ -351,7 +351,7 @@ const Projects: React.FC = () => {
                 <div className="subsection branding-subsection">
                   <div className="section-header">
                     <div className="section-title-group">
-                      <span className="section-number">02.3</span>
+                      <span className="section-number">02.1</span>
                       <h2 className="section-title">Product Design & Branding</h2>
                     </div>
                     <p className="section-description">
