@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import LazyImage from '../components/LazyImage';
 import { 
   magazineProjects, 
+  posterProjects,
   brandingProjects, 
   photographyPreview, 
   drawingsPreview,
   MagazineProject,
+  PosterProject,
   BrandingProject
 } from '../data/projectsData';
 import './Projects.css';
@@ -42,6 +44,7 @@ const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<MainCategory>('graphic-design');
   const [graphicSubCategory, setGraphicSubCategory] = useState<GraphicSubCategory>('magazines');
   const [selectedProject, setSelectedProject] = useState<MagazineProject | BrandingProject | null>(null);
+  const [selectedPoster, setSelectedPoster] = useState<PosterProject | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Animation refs
@@ -299,22 +302,52 @@ const Projects: React.FC = () => {
                       <h2 className="section-title">Posters</h2>
                     </div>
                     <p className="section-description">
-                      Bold visual communication through poster design for events and campaigns
+                      Bold visual communication through poster design for events, campaigns, and educational materials
                     </p>
                   </div>
 
-                  <div className="coming-soon-container">
-                    <div className="coming-soon-card">
-                      <div className="cs-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                          <circle cx="8.5" cy="8.5" r="1.5"/>
-                          <polyline points="21,15 16,10 5,21"/>
-                        </svg>
+                  <div className="posters-grid">
+                    {posterProjects.map((poster, index) => (
+                      <div 
+                        key={poster.id}
+                        className="poster-card"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                        onClick={() => {
+                          setSelectedPoster(poster);
+                          document.body.style.overflow = 'hidden';
+                        }}
+                      >
+                        <div className="poster-image-wrapper">
+                          <LazyImage
+                            src={poster.image}
+                            alt={poster.title}
+                            className="poster-image"
+                          />
+                          <div className="poster-overlay">
+                            <span className="view-poster-btn">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                              </svg>
+                              View Poster
+                            </span>
+                          </div>
+                        </div>
+                        <div className="poster-info">
+                          <div className="poster-meta">
+                            <span className="poster-year">{poster.year}</span>
+                            <div className="poster-tools">
+                              {poster.tools.slice(0, 2).map((tool) => (
+                                <span key={tool} className="poster-tool">{tool}</span>
+                              ))}
+                            </div>
+                          </div>
+                          <h3 className="poster-title">{poster.shortTitle}</h3>
+                          <p className="poster-description">{poster.description}</p>
+                        </div>
                       </div>
-                      <h3>Coming Soon</h3>
-                      <p>New poster designs are currently in development. Check back soon!</p>
-                    </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -529,6 +562,56 @@ const Projects: React.FC = () => {
                   </span>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Poster Lightbox Modal */}
+      {selectedPoster && (
+        <div 
+          className="poster-modal-overlay" 
+          onClick={() => {
+            setSelectedPoster(null);
+            document.body.style.overflow = 'unset';
+          }}
+        >
+          <div className="poster-modal" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="modal-close" 
+              onClick={() => {
+                setSelectedPoster(null);
+                document.body.style.overflow = 'unset';
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+
+            <div className="poster-modal-content">
+              <div className="poster-modal-image">
+                <img 
+                  src={selectedPoster.image} 
+                  alt={selectedPoster.title}
+                />
+              </div>
+              
+              <div className="poster-modal-info">
+                <div className="poster-modal-meta">
+                  <span className="modal-year">{selectedPoster.year}</span>
+                  <span className="modal-type">Poster</span>
+                </div>
+                <h2 className="poster-modal-title">{selectedPoster.shortTitle}</h2>
+                <p className="poster-modal-full-title">{selectedPoster.title}</p>
+                <p className="poster-modal-description">{selectedPoster.description}</p>
+                
+                <div className="poster-modal-tools">
+                  {selectedPoster.tools.map((tool) => (
+                    <span key={tool} className="modal-tool-chip">{tool}</span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

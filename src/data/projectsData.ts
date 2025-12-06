@@ -14,6 +14,7 @@ export interface MagazineProject {
 export interface PosterProject {
   id: string;
   title: string;
+  shortTitle: string;
   description: string;
   category: 'poster';
   image: string;
@@ -54,9 +55,68 @@ export const magazineProjects: MagazineProject[] = [
   }
 ];
 
-// Poster Projects (placeholder - add actual posters when available)
+// Poster Projects
 export const posterProjects: PosterProject[] = [
-  // Add poster projects here when available
+  {
+    id: 'asian-american-diaspora',
+    title: 'Asian American Diaspora – Learning Community Poster',
+    shortTitle: 'Asian American Diaspora Learning Cluster',
+    description: 'A promotional poster introducing a Spring 2026 learning community that connects research, writing, and cultural anthropology through immersive experiences in Boston\'s Chinatown.',
+    category: 'poster',
+    image: '/work/Graphic Design/posters/Asian American Diaspora – Learning Community Poster/image.png',
+    year: '2025',
+    tools: ['Illustrator', 'Photoshop']
+  },
+  {
+    id: 'holiday-celebration',
+    title: 'End-of-Semester Holiday Celebration Poster',
+    shortTitle: 'Holiday Celebration Invitation',
+    description: 'A festive invitation with warm holiday visuals, inviting students to a community celebration with an optional Yankee Swap activity.',
+    category: 'poster',
+    image: '/work/Graphic Design/posters/End-of-Semester Holiday Celebration Poster/image.png',
+    year: '2025',
+    tools: ['Illustrator', 'Photoshop']
+  },
+  {
+    id: 'orientation-schedule',
+    title: 'New International Student Orientation – Schedule Poster',
+    shortTitle: 'Orientation Two-Day Schedule',
+    description: 'A structured schedule design outlining the two-day orientation program for new international students, highlighting sessions, resources, and campus support.',
+    category: 'poster',
+    image: '/work/Graphic Design/posters/New International Student Orientation – Schedule Poster/International Community Day Poster/image.png',
+    year: '2025',
+    tools: ['Illustrator', 'InDesign']
+  },
+  {
+    id: 'international-community-day',
+    title: 'International Community Day Poster',
+    shortTitle: 'International Community Day Announcement',
+    description: 'A vibrant, inclusive poster inviting international students to learn about campus resources, safety practices, rights, and community support.',
+    category: 'poster',
+    image: '/work/Graphic Design/posters/International Community Day Poster/image.png',
+    year: '2025',
+    tools: ['Illustrator', 'Photoshop']
+  },
+  {
+    id: 'orientation-wayfinding',
+    title: 'Welcome to Orientation Wayfinding Poster',
+    shortTitle: 'Orientation Welcome Sign',
+    description: 'A clean, directional poster created to guide new international students on campus, emphasizing clarity and visual hierarchy.',
+    category: 'poster',
+    image: '/work/Graphic Design/posters/Welcome to Orientation Wayfinding Poster/image.png',
+    year: '2025',
+    tools: ['Illustrator']
+  },
+  {
+    id: 'visual-hierarchy-typography',
+    title: 'Visual Hierarchy - Typography Poster',
+    shortTitle: 'Typography Study',
+    description: 'An educational poster exploring the principles of visual hierarchy through typographic composition, demonstrating scale, weight, and spatial relationships.',
+    category: 'poster',
+    image: '/work/Graphic Design/posters/Visual Hierarchy - Typography Poster/image.png',
+    year: '2025',
+    tools: ['Illustrator', 'InDesign']
+  }
 ];
 
 // Product Design & Branding Projects
