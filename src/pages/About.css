@@ -259,55 +259,79 @@
 /* Floating Skills */
 .floating-skills {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   justify-content: center;
   margin-top: 60px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .skill-badge {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 100px;
+  gap: 14px;
+  padding: 18px 32px;
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 16px;
   font-family: 'Inter', sans-serif;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-charcoal);
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  flex: 0 0 auto;
+  min-width: 180px;
+  justify-content: center;
 }
 
 .about-hero-section.visible .skill-badge {
   opacity: 1;
   transform: translateY(0);
-  animation: floatBadge 3s ease-in-out infinite;
 }
 
-.skill-badge:nth-child(1) { animation-delay: 0.8s; }
-.skill-badge:nth-child(2) { animation-delay: 1s; }
-.skill-badge:nth-child(3) { animation-delay: 1.2s; }
+.skill-badge:nth-child(1) { transition-delay: 0.8s; }
+.skill-badge:nth-child(2) { transition-delay: 1s; }
+.skill-badge:nth-child(3) { transition-delay: 1.2s; }
 
 .skill-badge:hover {
-  background: rgba(212, 175, 55, 0.15);
+  background: #FFFFFF;
   border-color: var(--color-gold);
-  transform: translateY(-5px) scale(1.05);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
 }
 
 .skill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
   color: var(--color-gold);
-  font-size: 12px;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-@keyframes floatBadge {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.skill-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.skill-badge:hover .skill-icon {
+  background: var(--color-gold);
+  color: #FFFFFF;
 }
 
 @keyframes slideUp {
@@ -1017,6 +1041,15 @@
     font-size: 72px;
   }
   
+  .floating-skills {
+    gap: 16px;
+  }
+  
+  .skill-badge {
+    min-width: 160px;
+    padding: 16px 24px;
+  }
+  
   .stats-container {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -1052,28 +1085,72 @@
     padding-right: 24px;
   }
   
+  /* Hero Text Mobile Alignment */
+  .hero-text-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .name-label {
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .label-line {
+    width: 30px;
+  }
+  
+  .label-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  
   .hero-name-title {
-    font-size: 52px;
+    font-size: 48px;
+    text-align: center;
+  }
+  
+  .name-line {
+    display: block;
+    text-align: center;
   }
   
   .hero-tagline {
-    font-size: 17px;
+    font-size: 16px;
+    text-align: center;
+    max-width: 100%;
   }
   
   .hero-contact-links {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    width: 100%;
   }
   
   .contact-link {
-    padding: 10px 18px;
+    padding: 12px 20px;
     font-size: 13px;
+    width: auto;
+    max-width: 280px;
+    justify-content: center;
   }
   
   .floating-skills {
     flex-direction: column;
     align-items: center;
+    gap: 14px;
+    margin-top: 40px;
+  }
+  
+  .skill-badge {
+    width: 100%;
+    max-width: 280px;
+    min-width: auto;
+    padding: 16px 24px;
+    justify-content: center;
   }
   
   .stats-container {
@@ -1115,13 +1192,42 @@
     height: 320px;
   }
   
+  .image-accent-frame {
+    height: 320px;
+  }
+  
   .hero-name-title {
-    font-size: 42px;
+    font-size: 38px;
+  }
+  
+  .name-label {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  
+  .label-line {
+    width: 24px;
+  }
+  
+  .label-text {
+    font-size: 11px;
+    letter-spacing: 1.5px;
   }
   
   .skill-badge {
-    padding: 12px 20px;
-    font-size: 14px;
+    padding: 14px 20px;
+    max-width: 260px;
+  }
+  
+  .skill-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  
+  .skill-name {
+    font-size: 13px;
   }
   
   .stat-card {

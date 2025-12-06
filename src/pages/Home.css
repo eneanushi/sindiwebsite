@@ -732,7 +732,7 @@
    ========================================= */
 
 .gallery-preview-section {
-  padding: 120px 60px;
+  padding: 80px 60px 120px;
   background: #FFFFFF;
 }
 
@@ -1009,8 +1009,14 @@
     height: 450px;
   }
   
-  .featured-projects-section,
-  .gallery-preview-section,
+  .featured-projects-section {
+    padding: 100px 40px;
+  }
+  
+  .gallery-preview-section {
+    padding: 60px 40px 100px;
+  }
+  
   .skills-section-new {
     padding: 100px 40px;
   }
@@ -1128,9 +1134,12 @@
     flex-direction: column;
   }
   
-  .featured-projects-section,
-  .gallery-preview-section {
+  .featured-projects-section {
     padding: 80px 24px;
+  }
+  
+  .gallery-preview-section {
+    padding: 50px 24px 80px;
   }
   
   .gallery-preview-grid {
