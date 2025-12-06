@@ -412,12 +412,12 @@
 .snippet-label {
   display: inline-block;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   color: var(--color-gold);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .snippet-title {

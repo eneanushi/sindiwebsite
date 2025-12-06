@@ -196,17 +196,21 @@ const Home: React.FC = () => {
 
           <div className="about-snippet-content">
             <div className="snippet-header">
-              <span className="snippet-label">About</span>
               <h2 className="snippet-title">
-                Creating meaningful visual experiences
+                Meet Sindi
               </h2>
             </div>
 
             <p className="snippet-text">
-              Visual Design student at Bunker Hill Community College with a strong focus on 
-              creating clear, meaningful, and effective visual solutions. With 50+ completed 
-              projects across branding, product design, and promotional media.
-            </p>
+  Sindi has completed 50+ digital design projects across product design, 
+  branding, and promotional media, supported by strong skills in Adobe 
+  Creative Suite, Figma, HTML, and CSS. Her experience as a Student 
+  Ambassador and former Photo/Video Editor has strengthened her ability 
+  to communicate visually, lead creative initiatives, and collaborate 
+  with diverse teams.
+</p>
+
+
 
             <div className="snippet-stats">
               <div className="stat-block">
