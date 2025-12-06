@@ -21,20 +21,26 @@ const Navigation: React.FC = () => {
           SINDI LLUKA
         </Link>
         <div className="nav-links">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={location.pathname === '/' ? 'active' : ''}
           >
             Home
           </Link>
-          <Link 
-            to="/projects" 
+          <Link
+            to="/projects"
             className={location.pathname === '/projects' ? 'active' : ''}
           >
             Work
           </Link>
-          <Link 
-            to="/about" 
+          <Link
+            to="/gallery"
+            className={location.pathname === '/gallery' ? 'active' : ''}
+          >
+            Gallery
+          </Link>
+          <Link
+            to="/about"
             className={location.pathname === '/about' ? 'active' : ''}
           >
             About
