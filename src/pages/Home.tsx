@@ -46,7 +46,7 @@ const galleryPreview = [
   '/gallery/buildings/IMG_9737 2.jpeg',
   '/gallery/buildings/IMG_3672 2.jpeg',
   '/gallery/drawings/IMG_1664.jpeg',
-  '/gallery/buildings/IMG_3401 2.jpeg',
+  '/gallery/buildings/IMG_8906 2.jpeg',
 ];
 
 const Home: React.FC = () => {
