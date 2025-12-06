@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import SplashCursor from './components/SplashCursor';
@@ -9,12 +9,31 @@ import Resume from './pages/Resume';
 import Gallery from './pages/Gallery';
 import './App.css';
 
+// Scroll to top on route change - optimized for smooth transitions
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    // Use requestAnimationFrame for optimal timing
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto'
+      });
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 function AppContent() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
     <div className="App">
+      <ScrollToTop />
       {isHomePage && (
         <SplashCursor
           SIM_RESOLUTION={32}
