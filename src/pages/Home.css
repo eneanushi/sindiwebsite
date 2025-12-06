@@ -871,8 +871,8 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 20px 32px;
+  gap: 12px;
+  padding: 14px 20px;
   background: white;
   border: 1px solid #EEE;
   border-radius: 100px;
@@ -886,8 +886,8 @@
 }
 
 .skill-icon-wrapper {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -902,19 +902,19 @@
 .skill-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .skill-name-new {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #1A1A1A;
 }
 
 .skill-category {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   color: #888;
 }
 
