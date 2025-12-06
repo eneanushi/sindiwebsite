@@ -15,7 +15,15 @@ function AppContent() {
 
   return (
     <div className="App">
-      {isHomePage && <SplashCursor />}
+      {isHomePage && (
+        <SplashCursor
+          SIM_RESOLUTION={32}
+          DYE_RESOLUTION={128}
+          DENSITY_DISSIPATION={4}
+          VELOCITY_DISSIPATION={2.5}
+          PRESSURE_ITERATIONS={3}
+        />
+      )}
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

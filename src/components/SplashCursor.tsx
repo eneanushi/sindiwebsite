@@ -896,11 +896,16 @@ export default function SplashCursor({
     }
 
     function resizeCanvas() {
-      const width = scaleByPixelRatio(canvas!.clientWidth);
-      const height = scaleByPixelRatio(canvas!.clientHeight);
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const width = scaleByPixelRatio(viewportWidth);
+      const height = scaleByPixelRatio(viewportHeight);
       if (canvas!.width !== width || canvas!.height !== height) {
         canvas!.width = width;
         canvas!.height = height;
+        // Ensure CSS size matches viewport (not internal pixel ratio size)
+        canvas!.style.width = viewportWidth + 'px';
+        canvas!.style.height = viewportHeight + 'px';
         return true;
       }
       return false;
@@ -1117,8 +1122,11 @@ export default function SplashCursor({
       pointer.id = id;
       pointer.down = true;
       pointer.moved = false;
-      pointer.texcoordX = posX / canvas!.width;
-      pointer.texcoordY = 1 - posY / canvas!.height;
+      // Ensure coordinates are within canvas bounds
+      const clampedX = Math.max(0, Math.min(posX, canvas!.width));
+      const clampedY = Math.max(0, Math.min(posY, canvas!.height));
+      pointer.texcoordX = clampedX / canvas!.width;
+      pointer.texcoordY = 1 - clampedY / canvas!.height;
       pointer.prevTexcoordX = pointer.texcoordX;
       pointer.prevTexcoordY = pointer.texcoordY;
       pointer.deltaX = 0;
@@ -1129,8 +1137,11 @@ export default function SplashCursor({
     function updatePointerMoveData(pointer: Pointer, posX: number, posY: number, color: ColorRGB) {
       pointer.prevTexcoordX = pointer.texcoordX;
       pointer.prevTexcoordY = pointer.texcoordY;
-      pointer.texcoordX = posX / canvas!.width;
-      pointer.texcoordY = 1 - posY / canvas!.height;
+      // Ensure coordinates are within canvas bounds
+      const clampedX = Math.max(0, Math.min(posX, canvas!.width));
+      const clampedY = Math.max(0, Math.min(posY, canvas!.height));
+      pointer.texcoordX = clampedX / canvas!.width;
+      pointer.texcoordY = 1 - clampedY / canvas!.height;
       pointer.deltaX = correctDeltaX(pointer.texcoordX - pointer.prevTexcoordX)!;
       pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY)!;
       pointer.moved = Math.abs(pointer.deltaX) > 0 || Math.abs(pointer.deltaY) > 0;
@@ -1215,11 +1226,12 @@ export default function SplashCursor({
     window.addEventListener('mousedown', e => {
       lastMouseActivity = Date.now();
       const pointer = pointers[0];
-      const posX = scaleByPixelRatio(e.clientX);
-      const posY = scaleByPixelRatio(e.clientY);
+      // Clamp coordinates to viewport bounds
+      const posX = scaleByPixelRatio(Math.max(0, Math.min(e.clientX, window.innerWidth)));
+      const posY = scaleByPixelRatio(Math.max(0, Math.min(e.clientY, window.innerHeight)));
       updatePointerDownData(pointer, -1, posX, posY);
       clickSplat(pointer);
-    });
+    }, { passive: true });
 
     let lastMouseMoveTime = 0;
     const MOUSE_MOVE_THROTTLE = 16; // ~60fps
@@ -1227,8 +1239,9 @@ export default function SplashCursor({
     function handleFirstMouseMove(e: MouseEvent) {
       lastMouseActivity = Date.now();
       const pointer = pointers[0];
-      const posX = scaleByPixelRatio(e.clientX);
-      const posY = scaleByPixelRatio(e.clientY);
+      // Clamp coordinates to viewport bounds
+      const posX = scaleByPixelRatio(Math.max(0, Math.min(e.clientX, window.innerWidth)));
+      const posY = scaleByPixelRatio(Math.max(0, Math.min(e.clientY, window.innerHeight)));
       const color = generateColor();
       updateFrame();
       updatePointerMoveData(pointer, posX, posY, color);
@@ -1243,11 +1256,13 @@ export default function SplashCursor({
       lastMouseActivity = now; // Update activity timestamp
       
       const pointer = pointers[0];
-      const posX = scaleByPixelRatio(e.clientX);
-      const posY = scaleByPixelRatio(e.clientY);
+      // clientX/clientY are viewport coordinates in CSS pixels
+      // Scale to match canvas internal resolution (device pixels)
+      const posX = scaleByPixelRatio(Math.max(0, Math.min(e.clientX, window.innerWidth)));
+      const posY = scaleByPixelRatio(Math.max(0, Math.min(e.clientY, window.innerHeight)));
       const color = pointer.color;
       updatePointerMoveData(pointer, posX, posY, color);
-    });
+    }, { passive: true });
 
     function handleFirstTouchStart(e: TouchEvent) {
       lastMouseActivity = Date.now();
@@ -1306,6 +1321,7 @@ export default function SplashCursor({
       if (rafId !== null) {
         cancelAnimationFrame(rafId);
       }
+      // Cleanup will happen automatically as event listeners are on window
     };
   }, [
     SIM_RESOLUTION,
@@ -1330,19 +1346,28 @@ export default function SplashCursor({
         position: 'fixed',
         top: 0,
         left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: '100vh',
         zIndex: 50,
         pointerEvents: 'none',
-        width: '100%',
-        height: '100%'
+        overflow: 'hidden',
+        isolation: 'isolate'
       }}
     >
       <canvas
         ref={canvasRef}
         id="fluid"
         style={{
-          width: '100vw',
-          height: '100vh',
-          display: 'block'
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          margin: 0,
+          padding: 0
         }}
       />
     </div>
