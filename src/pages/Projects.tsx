@@ -359,75 +359,79 @@ const Projects: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="projects-showcase">
+                  {/* Side-by-Side Branding Cards */}
+                  <div className="branding-dual-showcase">
                     {brandingProjects.map((project, index) => (
                       <div 
                         key={project.id}
-                        className={`project-showcase-card branding-card ${project.id === 'eja-lounge' ? 'eja-featured' : ''}`}
-                        style={{ animationDelay: `${index * 0.15}s` }}
+                        className={`branding-showcase-card ${project.id}`}
+                        style={{ animationDelay: `${index * 0.2}s` }}
                       >
-                        <div className="showcase-header">
-                          <div className="showcase-meta">
-                            <span className="project-year">{project.year}</span>
-                            <span className="project-type">{project.id === 'eja-lounge' ? 'Restaurant Branding' : 'Branding'}</span>
+                        {/* Cover Image Background */}
+                        <div className="card-bg-images">
+                          <div 
+                            className="bg-image bg-image-1"
+                            style={{ backgroundImage: `url("${encodeURI(project.coverImage)}")` }}
+                          />
+                        </div>
+
+                        {/* Gradient Overlay */}
+                        <div className="card-gradient-overlay"></div>
+
+                        {/* Content */}
+                        <div className="card-content">
+                          <div className="card-meta">
+                            <span className="card-year">{project.year}</span>
+                            <span className="card-type">
+                              {project.id === 'eja-lounge' ? 'Restaurant Branding' : 'Product Branding'}
+                            </span>
                           </div>
-                          <h3 className="showcase-title">{project.title}</h3>
-                          <p className="showcase-description">{project.description}</p>
-                          <div className="showcase-tools">
+                          
+                          <h3 className="card-title">{project.title}</h3>
+                          
+                          <p className="card-description">{project.description}</p>
+                          
+                          <div className="card-tools">
                             {project.tools.map((tool) => (
-                              <span key={tool} className="tool-chip">{tool}</span>
+                              <span key={tool} className="card-tool">{tool}</span>
                             ))}
                           </div>
-                        </div>
 
-                        <div className="showcase-gallery">
-                          <div className={`gallery-grid ${project.id === 'eja-lounge' ? 'eja-grid' : 'branding-grid'}`}>
-                            {project.images.slice(0, project.id === 'eja-lounge' ? 8 : 6).map((img, imgIndex) => (
-                              <div 
-                                key={imgIndex}
-                                className={`gallery-item gallery-item-${imgIndex + 1}`}
-                                onClick={() => openProjectModal(project)}
-                              >
-                                <LazyImage
-                                  src={img}
-                                  alt={`${project.title} - Image ${imgIndex + 1}`}
-                                  className="gallery-image"
-                                />
-                                <div className="image-overlay">
-                                  <span className="view-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                      <circle cx="11" cy="11" r="8"/>
-                                      <path d="M21 21l-4.35-4.35"/>
-                                      <path d="M11 8v6M8 11h6"/>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="showcase-actions">
-                          <button 
-                            className="action-btn primary"
-                            onClick={() => openProjectModal(project)}
-                          >
-                            <span>View All Images</span>
-                          </button>
-                          {project.pdfUrl && (
-                            <a 
-                              href={project.pdfUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="action-btn secondary"
+                          <div className="card-actions">
+                            <button 
+                              className="card-btn primary"
+                              onClick={() => openProjectModal(project)}
                             >
                               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14,2 14,8 20,8"/>
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path d="M21 15l-5-5L5 21"/>
                               </svg>
-                              <span>View PDF</span>
-                            </a>
-                          )}
+                              <span>View Gallery</span>
+                            </button>
+                            {project.pdfUrl && (
+                              <a 
+                                href={project.pdfUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="card-btn secondary"
+                              >
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                  <polyline points="14 2 14 8 20 8"/>
+                                  <line x1="16" y1="13" x2="8" y2="13"/>
+                                  <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                                <span>View PDF</span>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Decorative Elements */}
+                        <div className="card-decoration">
+                          <div className="deco-line deco-line-1"></div>
+                          <div className="deco-line deco-line-2"></div>
                         </div>
                       </div>
                     ))}

@@ -27,6 +27,7 @@ export interface BrandingProject {
   title: string;
   description: string;
   category: 'branding';
+  coverImage: string;
   images: string[];
   pdfUrl?: string;
   year: string;
@@ -122,34 +123,11 @@ export const posterProjects: PosterProject[] = [
 // Product Design & Branding Projects
 export const brandingProjects: BrandingProject[] = [
   {
-    id: 'malesia-tea',
-    title: 'Malësia Tea',
-    description: 'Complete brand identity and product packaging design for Malësia, an artisanal tea company. The design draws inspiration from Albanian mountain heritage, featuring elegant typography and natural color palettes.',
-    category: 'branding',
-    images: [
-      '/work/Graphic Design/product design & branding/malesia/1.png',
-      '/work/Graphic Design/product design & branding/malesia/2.png',
-      '/work/Graphic Design/product design & branding/malesia/3.png',
-      '/work/Graphic Design/product design & branding/malesia/4.png',
-      '/work/Graphic Design/product design & branding/malesia/5.png',
-      '/work/Graphic Design/product design & branding/malesia/6.png',
-      '/work/Graphic Design/product design & branding/malesia/7.png',
-      '/work/Graphic Design/product design & branding/malesia/8.png',
-      '/work/Graphic Design/product design & branding/malesia/9.png',
-      '/work/Graphic Design/product design & branding/malesia/10.png',
-      '/work/Graphic Design/product design & branding/malesia/11.png',
-      '/work/Graphic Design/product design & branding/malesia/12.png',
-      '/work/Graphic Design/product design & branding/malesia/13.png',
-    ],
-    pdfUrl: '/work/Graphic Design/product design & branding/malesia/Malesia.pdf',
-    year: '2025',
-    tools: ['Illustrator', 'Photoshop', 'InDesign']
-  },
-  {
     id: 'eja-lounge',
     title: 'EJA Lounge – Victorian-Inspired Restaurant Branding System',
     description: 'EJA Lounge is a complete branding and identity project inspired by Late Victorian aesthetics and Albanian cultural elements. The visual system blends ornate patterns, rich jewel-toned color palettes, and a signature fan motif to create an inviting, elegant atmosphere that reflects the lounge\'s name—"Eja," meaning "come" in Albanian. The project includes moodboards, typography selection, motifs, menu design, business cards, interior visualizations, and digital mockups, all unified through detailed Victorian-inspired ornamentation and modern refinement.',
     category: 'branding',
+    coverImage: '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/13.png',
     images: [
       '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/1.png',
       '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/2.png',
@@ -172,6 +150,31 @@ export const brandingProjects: BrandingProject[] = [
     pdfUrl: '/work/Graphic Design/product design & branding/EJA Lounge – Victorian-Inspired Restaurant Branding/Eja.pdf',
     year: '2025',
     tools: ['Adobe Illustrator', 'Adobe InDesign', 'Adobe Photoshop']
+  },
+  {
+    id: 'malesia-tea',
+    title: 'Malësia Tea',
+    description: 'Complete brand identity and product packaging design for Malësia, an artisanal tea company. The design draws inspiration from Albanian mountain heritage, featuring elegant typography and natural color palettes.',
+    category: 'branding',
+    coverImage: '/work/Graphic Design/product design & branding/malesia/6.png',
+    images: [
+      '/work/Graphic Design/product design & branding/malesia/1.png',
+      '/work/Graphic Design/product design & branding/malesia/2.png',
+      '/work/Graphic Design/product design & branding/malesia/3.png',
+      '/work/Graphic Design/product design & branding/malesia/4.png',
+      '/work/Graphic Design/product design & branding/malesia/5.png',
+      '/work/Graphic Design/product design & branding/malesia/6.png',
+      '/work/Graphic Design/product design & branding/malesia/7.png',
+      '/work/Graphic Design/product design & branding/malesia/8.png',
+      '/work/Graphic Design/product design & branding/malesia/9.png',
+      '/work/Graphic Design/product design & branding/malesia/10.png',
+      '/work/Graphic Design/product design & branding/malesia/11.png',
+      '/work/Graphic Design/product design & branding/malesia/12.png',
+      '/work/Graphic Design/product design & branding/malesia/13.png',
+    ],
+    pdfUrl: '/work/Graphic Design/product design & branding/malesia/Malesia.pdf',
+    year: '2025',
+    tools: ['Illustrator', 'Photoshop', 'InDesign']
   }
 ];
 
