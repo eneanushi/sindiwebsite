@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useRef } from 'react';
 import Masonry from '../components/Masonry';
-import { galleryData } from '../data/galleryData';
+import { galleryData, GalleryImage } from '../data/galleryData';
 import './Gallery.css';
 
 const CATEGORIES = ['all', 'BHCC', 'buildings', 'drawings'] as const;
@@ -8,6 +8,7 @@ const CATEGORIES = ['all', 'BHCC', 'buildings', 'drawings'] as const;
 const Gallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const filteredItems = useMemo(() => {
@@ -37,6 +38,16 @@ const Gallery: React.FC = () => {
       }, 50);
     }, 150);
   }, [selectedCategory]);
+
+  const handleImageClick = useCallback((item: GalleryImage) => {
+    setSelectedImage(item);
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedImage(null);
+    document.body.style.overflow = 'unset';
+  }, []);
 
   return (
     <div className="gallery-page">
@@ -68,8 +79,29 @@ const Gallery: React.FC = () => {
           hoverScale={0.95}
           blurToFocus={false}
           colorShiftOnHover={false}
+          onImageClick={handleImageClick}
         />
       </div>
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && (
+        <div className="gallery-lightbox-overlay" onClick={closeLightbox}>
+          <div className="gallery-lightbox" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={closeLightbox}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+            <div className="lightbox-image-container">
+              <img 
+                src={selectedImage.img} 
+                alt={selectedImage.category || 'Gallery image'}
+                className="lightbox-image"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

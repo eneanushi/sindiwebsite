@@ -90,6 +90,84 @@
   }
 }
 
+/* =========================================
+   LIGHTBOX MODAL
+   ========================================= */
+
+.gallery-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gallery-lightbox {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: lightboxSlideUp 0.4s ease;
+}
+
+@keyframes lightboxSlideUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.lightbox-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .gallery-content {
@@ -98,5 +176,26 @@
   
   .category-btn {
     transition: none;
+  }
+  
+  .gallery-lightbox-overlay,
+  .gallery-lightbox {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-lightbox-overlay {
+    padding: 20px;
+  }
+  
+  .lightbox-close {
+    top: -45px;
+    right: 0;
+  }
+  
+  .lightbox-image {
+    max-width: 95vw;
+    max-height: 80vh;
   }
 }

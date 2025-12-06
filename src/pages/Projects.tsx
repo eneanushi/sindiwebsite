@@ -83,11 +83,11 @@ const Projects: React.FC = () => {
     navigate(`/gallery?filter=${category}`);
   };
 
-  // Main category labels
-  const mainCategories: { id: MainCategory; label: string; icon: string }[] = [
-    { id: 'photography', label: 'Photography & Media', icon: '📷' },
-    { id: 'graphic-design', label: 'Graphic Design', icon: '✦' },
-    { id: 'drawings', label: 'Drawings', icon: '✎' },
+  // Main category labels (Graphic Design first, then Photography, then Drawings)
+  const mainCategories: { id: MainCategory; label: string }[] = [
+    { id: 'graphic-design', label: 'Graphic Design' },
+    { id: 'photography', label: 'Photography & Media' },
+    { id: 'drawings', label: 'Drawings' },
   ];
 
   // Graphic design sub-categories
@@ -130,7 +130,6 @@ const Projects: React.FC = () => {
               className={`category-nav-btn ${activeCategory === cat.id ? 'active' : ''}`}
               onClick={() => handleCategoryChange(cat.id)}
             >
-              <span className="cat-icon">{cat.icon}</span>
               <span className="cat-label">{cat.label}</span>
               <span className="cat-underline"></span>
             </button>
@@ -337,11 +336,6 @@ const Projects: React.FC = () => {
                         <div className="poster-info">
                           <div className="poster-meta">
                             <span className="poster-year">{poster.year}</span>
-                            <div className="poster-tools">
-                              {poster.tools.slice(0, 2).map((tool) => (
-                                <span key={tool} className="poster-tool">{tool}</span>
-                              ))}
-                            </div>
                           </div>
                           <h3 className="poster-title">{poster.shortTitle}</h3>
                           <p className="poster-description">{poster.description}</p>

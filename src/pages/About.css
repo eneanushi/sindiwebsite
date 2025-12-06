@@ -197,6 +197,65 @@
   transform: translateY(0);
 }
 
+/* Contact Links */
+.hero-contact-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease 0.7s;
+}
+
+.about-hero-section.visible .hero-contact-links {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--color-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+}
+
+.contact-link svg {
+  flex-shrink: 0;
+  color: var(--color-gold);
+}
+
+.contact-link.linkedin:hover {
+  background: rgba(0, 119, 181, 0.1);
+  border-color: #0077B5;
+}
+
+.contact-link.linkedin:hover svg {
+  color: #0077B5;
+}
+
+.contact-link.email:hover svg {
+  color: var(--color-gold);
+}
+
 /* Floating Skills */
 .floating-skills {
   display: flex;
@@ -950,6 +1009,10 @@
     margin: 0 auto;
   }
   
+  .hero-contact-links {
+    justify-content: center;
+  }
+  
   .hero-name-title {
     font-size: 72px;
   }
@@ -995,6 +1058,17 @@
   
   .hero-tagline {
     font-size: 17px;
+  }
+  
+  .hero-contact-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .contact-link {
+    padding: 10px 18px;
+    font-size: 13px;
   }
   
   .floating-skills {
