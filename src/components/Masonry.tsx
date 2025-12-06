@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import LazyImage from './LazyImage';
 
 import './Masonry.css';
 
@@ -242,7 +243,12 @@ const Masonry: React.FC<MasonryProps> = ({
             onMouseEnter={e => handleMouseEnter(e, item)}
             onMouseLeave={e => handleMouseLeave(e, item)}
           >
-            <div className="item-img" style={{ backgroundImage: `url("${item.img}")` }}>
+            <div className="item-img">
+              <LazyImage
+                src={item.img}
+                alt={item.category || 'Gallery image'}
+                category={item.category}
+              />
               {colorShiftOnHover && (
                 <div
                   className="color-overlay"
@@ -258,11 +264,6 @@ const Masonry: React.FC<MasonryProps> = ({
                     borderRadius: '8px'
                   }}
                 />
-              )}
-              {item.category && (
-                <div className="masonry-category-label">
-                  {item.category}
-                </div>
               )}
             </div>
           </div>

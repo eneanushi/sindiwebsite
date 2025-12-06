@@ -36,10 +36,10 @@
   letter-spacing: 0.5px;
   cursor: pointer;
   border-radius: 4px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.category-btn:hover {
+.category-btn:hover:not(:disabled) {
   background: #333;
   color: white;
   transform: translateY(-2px);
@@ -51,64 +51,32 @@
   color: white;
 }
 
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  min-height: 300px;
+.category-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
-.loading-bar-wrapper {
-  width: 100%;
-  max-width: 500px;
-  height: 6px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.loading-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #333 0%, #555 50%, #333 100%);
-  background-size: 200% 100%;
-  border-radius: 10px;
-  transition: width 0.3s ease;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.loading-text {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #666;
-  letter-spacing: 0.5px;
-}
-
+/* Gallery content transitions */
 .gallery-content {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  will-change: opacity, transform;
 }
 
-.gallery-content.loading {
+.gallery-content.transitioning {
   opacity: 0;
+  transform: translateY(10px);
   pointer-events: none;
-  position: absolute;
 }
 
-.gallery-content.loaded {
+.gallery-content.visible {
   opacity: 1;
+  transform: translateY(0);
   pointer-events: auto;
+}
+
+/* Optimize for smooth scrolling and animations */
+.gallery-page {
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 768px) {
@@ -120,12 +88,15 @@
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
   }
+}
 
-  .loading-bar-wrapper {
-    max-width: 300px;
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-content {
+    transition: none;
   }
-
-  .loading-text {
-    font-size: 0.9rem;
+  
+  .category-btn {
+    transition: none;
   }
 }

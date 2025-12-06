@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useRef } from 'react';
 import Masonry from '../components/Masonry';
 import { galleryData } from '../data/galleryData';
 import './Gallery.css';
@@ -7,9 +7,8 @@ const CATEGORIES = ['all', 'BHCC', 'buildings', 'drawings'] as const;
 
 const Gallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'all') {
@@ -18,46 +17,26 @@ const Gallery: React.FC = () => {
     return galleryData.filter(item => item.category.toLowerCase() === selectedCategory.toLowerCase());
   }, [selectedCategory]);
 
-  const totalImages = filteredItems.length;
-
-  useEffect(() => {
-    setIsLoading(true);
-    setImagesLoaded(0);
-    setLoadingProgress(0);
-
-    const imagePromises = filteredItems.map((item, index) => {
-      return new Promise<void>((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          setImagesLoaded(prev => {
-            const newCount = prev + 1;
-            setLoadingProgress((newCount / totalImages) * 100);
-            return newCount;
-          });
-          resolve();
-        };
-        img.onerror = () => {
-          setImagesLoaded(prev => {
-            const newCount = prev + 1;
-            setLoadingProgress((newCount / totalImages) * 100);
-            return newCount;
-          });
-          resolve();
-        };
-        img.src = item.img;
-      });
-    });
-
-    Promise.all(imagePromises).then(() => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
-    });
-  }, [filteredItems, totalImages]);
-
   const handleCategoryChange = useCallback((category: string) => {
-    setSelectedCategory(category);
-  }, []);
+    if (category === selectedCategory) return;
+    
+    // Clear any existing transition timeout
+    if (transitionTimeoutRef.current) {
+      clearTimeout(transitionTimeoutRef.current);
+    }
+    
+    // Brief transition animation
+    setIsTransitioning(true);
+    
+    // Small delay to allow exit animation
+    transitionTimeoutRef.current = setTimeout(() => {
+      setSelectedCategory(category);
+      // Allow enter animation to complete
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 150);
+  }, [selectedCategory]);
 
   return (
     <div className="gallery-page">
@@ -69,6 +48,7 @@ const Gallery: React.FC = () => {
               key={cat}
               className={`category-btn ${selectedCategory === cat ? 'active' : ''}`}
               onClick={() => handleCategoryChange(cat)}
+              disabled={isTransitioning}
             >
               {cat === 'all' ? 'All' : cat.toUpperCase()}
             </button>
@@ -76,23 +56,13 @@ const Gallery: React.FC = () => {
         </div>
       </div>
 
-      {isLoading && (
-        <div className="loading-container">
-          <div className="loading-bar-wrapper">
-            <div className="loading-bar" style={{ width: `${loadingProgress}%` }} />
-          </div>
-          <div className="loading-text">
-            Loading {imagesLoaded} / {totalImages} images...
-          </div>
-        </div>
-      )}
-
-      <div className={`gallery-content ${isLoading ? 'loading' : 'loaded'}`}>
+      <div className={`gallery-content ${isTransitioning ? 'transitioning' : 'visible'}`}>
         <Masonry
+          key={selectedCategory} // Force remount for clean animation
           items={filteredItems}
           ease="power3.out"
           duration={0.3}
-          stagger={0.01}
+          stagger={0.02}
           animateFrom="bottom"
           scaleOnHover={true}
           hoverScale={0.95}

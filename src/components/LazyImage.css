@@ -1,0 +1,113 @@
+.lazy-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.lazy-image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+  background-size: 200% 200%;
+  animation: shimmer 2s ease-in-out infinite;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 2;
+}
+
+.lazy-image-placeholder.hidden {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+.loading-circle-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.loading-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.loading-circle-bg {
+  stroke: rgba(0, 0, 0, 0.1);
+}
+
+.loading-circle-progress {
+  stroke: #333;
+  transition: stroke-dashoffset 0.15s ease;
+}
+
+.loading-percentage {
+  position: absolute;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+.lazy-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lazy-image-category-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: labelFadeIn 0.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes labelFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
