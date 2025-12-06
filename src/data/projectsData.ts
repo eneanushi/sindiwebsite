@@ -40,7 +40,7 @@ export type GraphicDesignProject = MagazineProject | PosterProject | BrandingPro
 export const magazineProjects: MagazineProject[] = [
   {
     id: 'muse-magazine',
-    title: 'Muse Magazine',
+    title: 'Muse',
     description: 'A sophisticated editorial magazine featuring contemporary art and culture. The design emphasizes clean typography, balanced layouts, and thoughtful use of white space to let the content breathe.',
     category: 'magazine',
     images: [
