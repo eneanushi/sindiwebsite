@@ -49,7 +49,7 @@ export const magazineProjects: MagazineProject[] = [
       '/work/Graphic Design/magazine/Magazine_Muse/5.png',
     ],
     pdfUrl: '/work/Graphic Design/magazine/Magazine_Muse/muse.pdf',
-    year: '2024',
+    year: '2025',
     tools: ['InDesign', 'Photoshop', 'Illustrator']
   }
 ];
@@ -82,27 +82,27 @@ export const brandingProjects: BrandingProject[] = [
       '/work/Graphic Design/product design & branding/malesia/13.png',
     ],
     pdfUrl: '/work/Graphic Design/product design & branding/malesia/Malesia.pdf',
-    year: '2024',
+    year: '2025',
     tools: ['Illustrator', 'Photoshop', 'InDesign']
   }
 ];
 
 // Photography curated selection (subset of gallery)
 export const photographyPreview = [
-  { id: 'photo-1', img: '/gallery/BHCC/image00002.jpeg', height: 350 },
-  { id: 'photo-2', img: '/gallery/buildings/IMG_3672 2.jpeg', height: 420 },
-  { id: 'photo-3', img: '/gallery/BHCC/image00018.jpeg', height: 300 },
-  { id: 'photo-4', img: '/gallery/buildings/IMG_2812 2.jpeg', height: 380 },
-  { id: 'photo-5', img: '/gallery/BHCC/image00064.jpeg', height: 340 },
-  { id: 'photo-6', img: '/gallery/buildings/IMG_8906 2.jpeg', height: 400 },
+  { id: 'photo-1', img: '/gallery/buildings/IMG_9737%202.jpeg', height: 450 },
+  { id: 'photo-2', img: '/gallery/buildings/IMG_3672 2.jpeg', height: 380 },
+  { id: 'photo-3', img: 'gallery/BHCC/image00070.jpeg', height: 450 },
+  { id: 'photo-4', img: '/gallery/BHCC/image00104.jpeg', height: 450 },
+  { id: 'photo-5', img: '/gallery/buildings/IMG_3401%202.jpeg', height: 380 },
+  { id: 'photo-6', img: '/gallery/buildings/IMG_8906 2.jpeg', height: 450 },
 ];
 
 // Drawings curated selection (subset of gallery)
 export const drawingsPreview = [
-  { id: 'draw-1', img: '/gallery/drawings/IMG_1143.jpeg', height: 400 },
-  { id: 'draw-2', img: '/gallery/drawings/IMG_1664.jpeg', height: 350 },
-  { id: 'draw-3', img: '/gallery/drawings/IMG_2017.jpeg', height: 380 },
-  { id: 'draw-4', img: '/gallery/drawings/IMG_3423.jpeg', height: 420 },
-  { id: 'draw-5', img: '/gallery/drawings/02481AF7-D4AC-432A-86D7-FD58A780E2A8.JPG', height: 360 },
-  { id: 'draw-6', img: '/gallery/drawings/B5E4BC22-A0BD-4705-A791-191F81AF8209.JPG', height: 390 },
+  { id: 'draw-1', img: '/gallery/drawings/IMG_1664.jpeg', height: 400 },
+  { id: 'draw-2', img: '/gallery/drawings/IMG_1143.jpeg', height: 340 },
+  { id: 'draw-3', img: '/gallery/drawings/IMG_2017.jpeg', height: 400 },
+  { id: 'draw-4', img: '/gallery/drawings/IMG_3423.jpeg', height: 400 },
+  { id: 'draw-5', img: '/gallery/drawings/02481AF7-D4AC-432A-86D7-FD58A780E2A8.JPG', height: 380 },
+  { id: 'draw-6', img: '/gallery/drawings/IMG_3596.jpg', height: 400 },
 ];
