@@ -180,14 +180,6 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <button className="scroll-indicator" onClick={scrollToNextSection}>
-          <span className="scroll-text">Scroll</span>
-          <div className="scroll-line">
-            <div className="scroll-dot" />
-          </div>
-        </button>
       </section>
 
       {/* About Snippet Section */}
