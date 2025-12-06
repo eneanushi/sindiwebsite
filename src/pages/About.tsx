@@ -170,10 +170,6 @@ const About: React.FC = () => {
       description: 'Full magazine layout with structured typography'
     },
     {
-      title: 'Real Estate Website (UI Design)',
-      description: 'Designed complete interface (anthonykadelliu.com)'
-    },
-    {
       title: 'Portfolio Website',
       description: 'Built with TypeScript + React; used AI tools for productivity'
     }
