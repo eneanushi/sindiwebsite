@@ -41,7 +41,7 @@ interface Item {
   img: string;
   url: string;
   height: number;
-  category?: string;
+  category: string;
 }
 
 interface GridItem extends Item {

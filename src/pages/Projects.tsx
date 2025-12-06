@@ -599,12 +599,6 @@ const Projects: React.FC = () => {
                 <h2 className="poster-modal-title">{selectedPoster.shortTitle}</h2>
                 <p className="poster-modal-full-title">{selectedPoster.title}</p>
                 <p className="poster-modal-description">{selectedPoster.description}</p>
-                
-                <div className="poster-modal-tools">
-                  {selectedPoster.tools.map((tool) => (
-                    <span key={tool} className="modal-tool-chip">{tool}</span>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

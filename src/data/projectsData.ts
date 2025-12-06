@@ -163,6 +163,6 @@ export const drawingsPreview = [
   { id: 'draw-2', img: '/gallery/drawings/IMG_1143.jpeg', height: 340 },
   { id: 'draw-3', img: '/gallery/drawings/IMG_2017.jpeg', height: 400 },
   { id: 'draw-4', img: '/gallery/drawings/IMG_3423.jpeg', height: 400 },
-  { id: 'draw-5', img: '/gallery/drawings/02481AF7-D4AC-432A-86D7-FD58A780E2A8.JPG', height: 380 },
+  { id: 'draw-5', img: 'gallery/drawings/F8B0255A-4B8C-4703-881A-71AF5DD5642C.JPG', height: 380 },
   { id: 'draw-6', img: '/gallery/drawings/IMG_3596.jpg', height: 400 },
 ];
