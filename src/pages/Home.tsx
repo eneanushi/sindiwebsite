@@ -289,7 +289,7 @@ const Home: React.FC = () => {
                   className="project-cover"
                 />
                 <div className="project-card-overlay">
-                  <span className="view-project-btn">View Project</span>
+                  <span className="view-project-btn">Explore Projects</span>
                 </div>
               </div>
               <div className="project-card-info">
